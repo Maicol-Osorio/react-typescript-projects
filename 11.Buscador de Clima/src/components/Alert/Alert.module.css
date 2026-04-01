@@ -1,0 +1,31 @@
+.alert {
+    background-color: rgba(255, 0, 0, 0.85);
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 40rem;
+
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alert {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

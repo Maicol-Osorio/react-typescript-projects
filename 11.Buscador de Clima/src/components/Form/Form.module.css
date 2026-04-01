@@ -1,0 +1,77 @@
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;            
+    max-width: 50rem;      
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+h2 {
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.form__group label {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+
+.form__group input {
+    border: 1px solid #ccc;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+}
+
+
+select {
+    padding: 0.8rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+}
+
+
+form label:hover {
+    cursor: pointer;
+}
+
+
+form input[type="submit"] {
+    background-color: rgba(255, 166, 0, 0.9);
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+
+form input[type="submit"]:hover {
+    background-color: orange;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0px 0px black;
+}
