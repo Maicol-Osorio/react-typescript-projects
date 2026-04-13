@@ -7,3 +7,24 @@ export const categorieSchema = z.object({
         })
     )
 })
+
+export const searchRecipes = z.object({
+    ingredient: z.string(),
+    category: z.string()
+})
+
+export const listRecipes = z.object({
+    drinks: z.array(
+        z.object({
+            idDrink: z.string(),
+            strDrink: z.string(),
+            strDrinkThumb: z.string()
+        })
+    )
+})
+
+export const recipeSchema = z.object({
+    idDrink: z.string(),
+    strDrink: z.string(),
+    strDrinkThumb: z.string()
+})
