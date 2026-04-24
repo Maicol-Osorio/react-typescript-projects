@@ -1,11 +1,31 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Fragment, type JSX } from 'react';
 import { useAppStore } from '../Stores/useAppStore';
+import type { recipeByIdT } from '../Types';
 
 export default function Modal() {
     const modal = useAppStore((state) => state.modal)
     const recipeById = useAppStore((state) => state.recipeById)
     const closeModal = useAppStore((state) => state.closeModal)
+    const handleClickFavorites = useAppStore((state)=>state.handleClickFavorites)
+    const favoriteExist = useAppStore((state)=>state.favoriteExist)
+    
+
+    const recipeIngredients = () => {
+        const ingredients: JSX.Element[] = []
+        for (let i = 1; i <= 6; i++) {
+            const ingredietKey = recipeById[`strIngredient${i}` as keyof recipeByIdT]
+            const ingredientValue = recipeById[`strMeasure${i}` as keyof recipeByIdT]
+            if (ingredietKey && ingredientValue) {
+                ingredients.push(
+                    <li key={ingredietKey} className='text-lg font-medium'>
+                        {ingredietKey} - {ingredientValue}
+                    </li>
+                )
+            }
+        }
+        return ingredients
+    }
     return (
         <>
             <Transition appear show={modal} as={Fragment}>
@@ -42,9 +62,18 @@ export default function Modal() {
                                     </Dialog.Title>
                                     <Dialog.Title as="h3" className="text-orange-600 text-2xl font-extrabold my-5">
                                         Ingredientes y Cantidades
+
                                     </Dialog.Title>
                                     <Dialog.Title as="h3" className="text-gray-900 text-xl font-bold my-5">
+                                        {recipeIngredients()}
                                         {recipeById.strInstructions}
+
+                                        <div className='grid grid-cols-2 gap-3'>
+                                            <button className="text-white bg-red-500 capitalize p-3 w-full rounded-md font-bold cursor-pointer hover:bg-red-600  duration-200 mt-5 text-xl" onClick={closeModal}>cerrar</button>
+
+                                            <button className="text-white bg-orange-500 capitalize p-3 w-full rounded-md font-bold cursor-pointer hover:bg-orange-600  duration-200 mt-5 text-xl" onClick={()=>handleClickFavorites(recipeById)}>{favoriteExist(recipeById.idDrink)? "eliminar de favoritos": "agregar a favoritos"}</button>
+
+                                        </div>
                                     </Dialog.Title>
                                 </Dialog.Panel>
                             </Transition.Child>
